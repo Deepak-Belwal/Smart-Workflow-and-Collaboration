@@ -293,12 +293,10 @@ function loadUsers() {
 
 function loadTasks() {
 
-    // Clear columns first
     document.getElementById("todo").innerHTML = "<h3>To Do</h3>";
     document.getElementById("in_progress").innerHTML = "<h3>In Progress</h3>";
     document.getElementById("done").innerHTML = "<h3>Done</h3>";
 
-    // ADMIN
     if (currentUser.role === "admin") {
 
         fetch("../backend/get_all_tasks.php")
