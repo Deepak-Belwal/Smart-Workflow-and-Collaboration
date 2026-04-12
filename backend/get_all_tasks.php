@@ -2,15 +2,15 @@
 session_start();
 include "config/db.php";
 
-// 🔒 Only admin allowed
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     echo json_encode([]);
     exit();
 }
 
-$sql = "SELECT tasks.id, tasks.title, tasks.status, users.name 
-        FROM tasks 
-        JOIN users ON tasks.assigned_to = users.id";
+$sql = "SELECT tasks.id, tasks.title, tasks.status, users.name, teams.name AS team
+        FROM tasks
+        JOIN users ON tasks.assigned_to = users.id
+        LEFT JOIN teams ON users.team_id = teams.id";
 
 $result = $conn->query($sql);
 
