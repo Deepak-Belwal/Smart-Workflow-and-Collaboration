@@ -18,7 +18,7 @@ The current systems are not seamless when it comes to collaborative tasks and th
 2. Open the link to phpMyAdmin (http://localhost/phpmyadmin/) and create a new database. 
 3. Edit the backend/config/db.php file and replace [password] with mySQL root password and [database_name] with the name of the newly created database.
 4. Run the following query inside the database in phpMyAdmin page:
-    CREATE TABLE users (
+    '''CREATE TABLE users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
         password VARCHAR(255) NOT NULL,
@@ -32,13 +32,13 @@ The current systems are not seamless when it comes to collaborative tasks and th
         priority ENUM('low', 'medium', 'high') DEFAULT 'medium',
         deadline DATE,
         assigned_to INT,
-
         FOREIGN KEY (assigned_to) REFERENCES users(id)
             ON DELETE CASCADE
     );
+   '''
     - This will create the tables' structures.
-5. Open the index.html page in the localhost server (http://localhost/smartworkflow/frontend/index.html). 
-6. Now add users using the register page and start working with it.
+6. Open the index.html page in the localhost server (http://localhost/smartworkflow/frontend/index.html). 
+7. Now add users using the register page and start working with it.
 
 # Screenshots
 ## Index Page:-
