@@ -16,7 +16,7 @@ The current systems are not seamless when it comes to collaborative tasks and th
 # Execution Process
 1. Start apache and mysql from the xampp control panel.
 2. Open the link to phpMyAdmin (http://localhost/phpmyadmin/) and create a new database. 
-3. Edit the backend/config/db.php, backend/update_profile.php, backend/get_current_user.php files and replace [password] with mySQL root password and [database_name] with the name of the newly created database.
+3. Edit the backend/config/db.php, backend/update_profile.php, backend/get_current_user.php and backend/register.php files and replace [password] with mySQL root password and [database_name] with the name of the newly created database.
 4. Run the following query inside the database in phpMyAdmin page:
     ```
     CREATE TABLE users (
