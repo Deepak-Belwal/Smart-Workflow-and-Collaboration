@@ -6,12 +6,13 @@
 <title>Dashboard</title>
 
 <style>
-
 body {
-    background: linear-gradient(to bottom right, #0f172a, #020617);
+    background-image: url("../img/dashboard_bg.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0f172a;
     color: #e2e8f0;
 }
 
@@ -243,11 +244,48 @@ body {
     color: white;
 }
 
+.edit-form {
+    width: 60%;   /* 🔥 ~3/5 width */
+    margin: 20px auto 0;
+}
+
+.edit-form input {
+    width: 100%;
+    padding: 10px;   /* 🔥 reduced */
+    margin: 6px 0;   /* tighter spacing */
+
+    border-radius: 6px;
+    border: none;
+
+    background: rgba(255,255,255,0.08);
+    color: #e2e8f0;
+
+    font-size: 14px;
+}
+
+.edit-form input::placeholder {
+    color: #94a3b8;
+}
+
 /* TITLE (SHORT + BOLD) */
 .title-input {
     width: 60%;
     font-size: 18px;
     font-weight: bold;
+}
+
+.edit-btn {
+    margin-top: 10px;
+}
+
+#editForm input {
+    width: 100%;
+    margin: 8px 0;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
 }
 
 /* DESCRIPTION (2 lines) */
@@ -290,15 +328,137 @@ body {
     cursor: pointer;
 }
 
-.btn-start { background: orange; }
-.btn-done { background: green; }
-.btn-delete { background: red; }
+.edit-btn {
+    margin-top: 12px;
+    padding: 10px 18px;
+
+    background: rgba(59,130,246,0.15);
+    color: #60a5fa;
+
+    border: 1px solid rgba(59,130,246,0.4);
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.edit-btn:hover {
+    background: rgba(59,130,246,0.3);
+    box-shadow: 0 0 10px rgba(59,130,246,0.5);
+}
+
+.save-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px rgba(34,197,94,0.6);
+}
+
+.save-btn:active {
+    transform: scale(0.98);
+}
+
+.task-btn {
+    flex: 1;
+    padding: 6px 10px;
+
+    font-size: 12px;
+    border-radius: 6px;
+    border: none;
+
+    cursor: pointer;
+    transition: 0.2s;
+
+    background: rgba(255,255,255,0.08);
+    color: #cbd5f5;
+
+    backdrop-filter: blur(6px);
+}
+
+/* HOVER */
+.task-btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255,255,255,0.15);
+}
+
+/* START */
+.btn-start {
+    border: 1px solid rgba(59,130,246,0.4);
+}
+.btn-start:hover {
+    box-shadow: 0 0 8px rgba(59,130,246,0.6);
+}
+
+/* DONE */
+.btn-done {
+    border: 1px solid rgba(34,197,94,0.4);
+}
+.btn-done:hover {
+    box-shadow: 0 0 8px rgba(34,197,94,0.6);
+}
+
+/* DELETE */
+.btn-delete {
+    border: 1px solid rgba(239,68,68,0.4);
+}
+.btn-delete:hover {
+    box-shadow: 0 0 8px rgba(239,68,68,0.6);
+}
 
 /* KANBAN */
 .kanban {
     margin: 10px;
     display: flex;
     gap: 20px;
+}
+
+#profilePicLarge {
+    width: 200px;      /* 🔥 reduce size */
+    height: 200px;     /* keep equal for circle */
+
+    border-radius: 50%;
+    object-fit: cover;  /* prevents distortion */
+}
+
+#profilePicLarge:hover{
+    transform:10px;
+}
+
+.custom-file {
+    display: block;
+    margin: 10px 0;
+
+    padding: 10px;
+    border-radius: 6px;
+
+    background: rgb(69, 69, 255);
+    border: 1px solid rgba(255,255,255,0.1);
+
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.custom-file:hover {
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(59,130,246,0.4);
+}
+
+.custom-file input {
+    display: none;
 }
 
 .column {
@@ -413,10 +573,33 @@ body {
 
 <!-- PROFILE -->
 <div id="profileSection" style="display:none;">
-    <div class="task-card">
-        <h2>My Profile</h2>
-        <p>Name: <span id="profileName"></span></p>
-        <p>Email: <span id="profileEmail"></span></p>
+    <div class="task-card profile-card">
+
+        <img id="profilePicLarge" src="https://via.placeholder.com/100">
+
+        <h2 id="profileName">User Name</h2>
+        <p id="profileEmail">user@email.com</p>
+
+        <button onclick="toggleEdit()" class="edit-btn">Edit Profile</button>
+
+        <!-- 🔥 HIDDEN EDIT FORM -->
+        <div id="editForm" class="edit-form" style="display:none; margin-top:20px;">
+
+            <input type="text" id="newName" placeholder="New Name">
+
+            <label>Change Profile Image</label>
+            <label class="custom-file">
+                <input type="file" id="newImage">
+                <span id="fileText2">Change Profile Image</span>
+            </label>
+
+            <input type="password" id="currentPassword" placeholder="Current Password">
+            <input type="password" id="newPassword" placeholder="New Password">
+
+            <button onclick="updateProfile()" class="save-btn">Save Changes</button>
+
+        </div>
+
     </div>
 </div>
 
@@ -436,9 +619,7 @@ function checkUser() {
     fetch("../backend/get_current_user.php")
     .then(res => res.json())
     .then(data => {
-        if (data.profile_image) {
-            document.getElementById("profilePic").src = "../uploads/" + data.profile_image;
-        }
+
         if (!data.logged_in) {
             window.location.href = "login.html";
             return;
@@ -446,9 +627,28 @@ function checkUser() {
 
         currentUser = data;
 
+        // 🔥 DEBUG (REMOVE LATER)
+        console.log("User Data:", data);
+
+        // ✅ PROFILE IMAGE FIX
+        if (data.profile_image && data.profile_image !== "") {
+
+            const imgPath = "../uploads/" + data.profile_image;
+
+            console.log("Image Path:", imgPath);
+
+            document.getElementById("profilePic").src = imgPath;
+            document.getElementById("profilePicLarge").src = imgPath;
+
+        } else {
+            // fallback image
+            document.getElementById("profilePic").src = "https://via.placeholder.com/40";
+            document.getElementById("profilePicLarge").src = "https://via.placeholder.com/100";
+        }
+
         document.getElementById("roleDisplay").innerText = data.role.toUpperCase();
-        document.getElementById("profileName").innerText = data.name;
-        document.getElementById("profileEmail").innerText = data.email;
+        document.getElementById("profileName").innerText = data.name || "Not Available";
+        document.getElementById("profileEmail").innerText = data.email || "Not Available";
 
         if (data.role !== "admin") {
             document.getElementById("adminPanel").style.display = "none";
@@ -492,14 +692,18 @@ function loadTasks() {
 
             let html = `
                 <div class="task-card">
-                    <b>${task.title}</b><br>
 
-                    ${currentUser.role === "admin"
-                        ? `<button class="btn-delete" onclick="deleteTask(${task.id})">Delete</button>`
-                        : `
-                        <button class="btn-start" onclick="updateTask(${task.id}, 'in_progress')">Start</button>
-                        <button class="btn-done" onclick="updateTask(${task.id}, 'done')">Done</button>
-                        `}
+                    <b style="color: black;">${task.title}</b><br><br>
+
+                    <div class="task-actions">
+                        ${currentUser.role === "admin"
+                            ? `<button class="task-btn btn-delete" onclick="deleteTask(${task.id})">🗑 Delete</button>`
+                            : `
+                            <button class="task-btn btn-start" onclick="updateTask(${task.id}, 'in_progress')">▶ Start</button>
+                            <button class="task-btn btn-done" onclick="updateTask(${task.id}, 'done')">✔ Done</button>
+                            `}
+                    </div>
+
                 </div>
             `;
 
@@ -510,7 +714,7 @@ function loadTasks() {
             else if (task.status === "done") done++;
         });
 
-        // 🔥 UPDATE ANALYTICS TEXT (NEW)
+        // Analytics
         document.getElementById("todoCount").innerText = todo;
         document.getElementById("progressCount").innerText = inProgress;
         document.getElementById("doneCount").innerText = done;
@@ -612,6 +816,44 @@ function toggleSidebar() {
         overlay.style.display = "none";
     }
 }
+
+function toggleEdit() {
+    const form = document.getElementById("editForm");
+
+    form.style.display = form.style.display === "none" ? "block" : "none";
+}
+
+function updateProfile() {
+
+    const formData = new FormData();
+
+    formData.append("name", document.getElementById("newName").value);
+    formData.append("currentPassword", document.getElementById("currentPassword").value);
+    formData.append("newPassword", document.getElementById("newPassword").value);
+
+    const image = document.getElementById("newImage").files[0];
+    if (image) {
+        formData.append("profile_image", image);
+    }
+
+    fetch("../backend/update_profile.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(res => res.text())
+    .then(msg => {
+        alert(msg);
+        checkUser();
+    });
+}
+
+document.getElementById("newImage").addEventListener("change", function () {
+    const text = document.getElementById("fileText2");
+
+    if (this.files.length > 0) {
+        text.innerText = this.files[0].name;
+    }
+});
 
 window.onload = checkUser;
 

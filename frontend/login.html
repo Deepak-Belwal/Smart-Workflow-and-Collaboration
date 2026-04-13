@@ -1,72 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: white;
-        }
+<meta charset="UTF-8">
+<title>Login</title>
 
-        .container {
-            width: 320px;
-            margin: 100px auto;
-            padding: 30px;
-            background: #1e293b;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            text-align: center;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    height: 100vh;
+    background-image: url("../img/log_sign_in.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        h2 {
-            margin-bottom: 20px;
-        }
+/* GLASS CARD */
+.container {
+    width: 460px; /* 🔥 slightly bigger */
+    padding: 45px;
 
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 6px;
-            background: #334155;
-            color: white;
-        }
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
 
-        input::placeholder {
-            color: #94a3b8;
-        }
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #3b82f6;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
 
-        button:hover {
-            background: #2563eb;
-        }
+    animation: fadeIn 0.6s ease;
+}
 
-        p {
-            margin-top: 15px;
-            color: #cbd5f5;
-        }
+/* TITLE */
+h2 {
+    margin-bottom: 25px;
+    color: rgba(255,255,255,0.5);
+}
 
-        a {
-            color: #60a5fa;
-            text-decoration: none;
-        }
+/* INPUTS */
+input {
+    width: 100%;
+    box-sizing: border-box; /* 🔥 alignment fix */
+    padding: 14px;
+    margin: 12px 0;
 
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    border-radius: 8px;
+    border: none;
+
+    background: rgba(255,255,255,0.1);
+    color: #e2e8f0;
+
+    transition: 0.3s;
+}
+
+/* PLACEHOLDER */
+input::placeholder {
+    color: #94a3b8;
+}
+
+/* INPUT FOCUS */
+input:focus {
+    outline: none;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(59,130,246,0.6);
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    margin-top: 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* BUTTON HOVER */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(59,130,246,0.6);
+}
+
+/* BUTTON CLICK */
+button:active {
+    transform: scale(0.98);
+}
+
+/* LINK */
+p {
+    margin-top: 18px;
+    font-size: 14px;
+    color: #cbd5f5;
+}
+
+a {
+    color: #60a5fa;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #93c5fd;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
