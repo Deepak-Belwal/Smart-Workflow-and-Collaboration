@@ -41,6 +41,11 @@ The current systems are not seamless when it comes to collaborative tasks and th
 6. Now add users using the register page and start working with it.
 
 # Screenshots
-![INDEX](img/image.png)
-![LOGIN](img/image-1.png)
-![DASHBOARD_ADMIN](img/image-2.png)
+## Index Page:-
+![index](img/image.png)<br>
+## Login Page:-
+![login](img/image-1.png)<br>
+## Admin Dashboard:-
+![dashboard](img/image-2.png)<br>
+## Analytics:-
+![analytics](img/image-3.png)<br>
