@@ -20,7 +20,6 @@ body {
 
 .app { display: flex; }
 
-/* SIDEBAR */
 .sidebar {
     position: fixed;
     left: -220px;
@@ -42,7 +41,7 @@ body {
     background: rgba(0,0,0,0.5);
     backdrop-filter: blur(4px);
     display: none;
-    z-index: 5000; /* below sidebar */
+    z-index: 5000;
 }
 
 .sidebar.active { left: 0; }
@@ -61,7 +60,6 @@ body {
     background: rgba(255,255,255,0.1);
 }
 
-/* MAIN */
 .main-content {
     flex: 1;
     padding: 20px;
@@ -123,7 +121,6 @@ body {
     border: 2px solid #3b82f6;
 }
 
-/* CARD */
 .task-card {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
@@ -159,7 +156,7 @@ body {
     gap: 60px;
     padding: 40px;
 
-    min-height: 400px; /* overall size bigger */
+    min-height: 400px;
     animation: fadeUp 0.6s ease;
 }
 
@@ -174,7 +171,6 @@ body {
     }
 }
 
-/* LEFT CARD */
 .analytics-overview {
     flex: 1;
 
@@ -196,24 +192,14 @@ body {
     margin: 12px 0;
 }
 
-/* TIP BOX */
-.analytics-tip {
-    margin-top: 20px;
-    padding: 12px;
 
-    border-radius: 8px;
-    background: rgba(255,255,255,0.05);
-}
-
-/* RIGHT CHART */
 .analytics-chart {
     flex: 1;
 
-    height: 400px;   /* 🔥 increased height (fix overflow) */
+    height: 400px;
     max-width: 500px;
 }
 
-/* MAKE CANVAS FILL */
 .analytics-chart canvas {
     width: 100%;
     height: 100%;
@@ -233,7 +219,6 @@ body {
     height: 300px;
 }
 
-/* FORM */
 .form-input {
     width: 100%;
     padding: 12px;
@@ -245,14 +230,14 @@ body {
 }
 
 .edit-form {
-    width: 60%;   /* 🔥 ~3/5 width */
+    width: 60%;
     margin: 20px auto 0;
 }
 
 .edit-form input {
     width: 100%;
-    padding: 10px;   /* 🔥 reduced */
-    margin: 6px 0;   /* tighter spacing */
+    padding: 10px;
+    margin: 6px 0;
 
     border-radius: 6px;
     border: none;
@@ -267,7 +252,6 @@ body {
     color: #94a3b8;
 }
 
-/* TITLE (SHORT + BOLD) */
 .title-input {
     width: 60%;
     font-size: 18px;
@@ -288,13 +272,11 @@ body {
     color: white;
 }
 
-/* DESCRIPTION (2 lines) */
 .desc-input {
     width: 80%;
     height: 60px;
 }
 
-/* ROW (priority + date small) */
 .row {
     display: flex;
     gap: 10px;
@@ -306,19 +288,16 @@ body {
     flex: 1;
 }
 
-/* ASSIGNED TO = SAME WIDTH AS ROW */
 #assigned_to {
     width: 50%;
 }
 
-/* BUTTON ALIGN RIGHT */
 .btn-row {
     width: 100%;
     display: flex;
     justify-content: flex-end;
 }
 
-/* BUTTON */
 .btn-create {
     background: #3b82f6;
     padding: 10px 20px;
@@ -388,13 +367,11 @@ body {
     backdrop-filter: blur(6px);
 }
 
-/* HOVER */
 .task-btn:hover {
     transform: translateY(-1px);
     background: rgba(255,255,255,0.15);
 }
 
-/* START */
 .btn-start {
     border: 1px solid rgba(59,130,246,0.4);
 }
@@ -402,7 +379,6 @@ body {
     box-shadow: 0 0 8px rgba(59,130,246,0.6);
 }
 
-/* DONE */
 .btn-done {
     border: 1px solid rgba(34,197,94,0.4);
 }
@@ -410,7 +386,6 @@ body {
     box-shadow: 0 0 8px rgba(34,197,94,0.6);
 }
 
-/* DELETE */
 .btn-delete {
     border: 1px solid rgba(239,68,68,0.4);
 }
@@ -418,7 +393,6 @@ body {
     box-shadow: 0 0 8px rgba(239,68,68,0.6);
 }
 
-/* KANBAN */
 .kanban {
     margin: 10px;
     display: flex;
@@ -426,11 +400,11 @@ body {
 }
 
 #profilePicLarge {
-    width: 200px;      /* 🔥 reduce size */
-    height: 200px;     /* keep equal for circle */
+    width: 200px;
+    height: 200px;
 
     border-radius: 50%;
-    object-fit: cover;  /* prevents distortion */
+    object-fit: cover;
 }
 
 #profilePicLarge:hover{
@@ -627,10 +601,8 @@ function checkUser() {
 
         currentUser = data;
 
-        // 🔥 DEBUG (REMOVE LATER)
         console.log("User Data:", data);
 
-        // ✅ PROFILE IMAGE FIX
         if (data.profile_image && data.profile_image !== "") {
 
             const imgPath = "../uploads/" + data.profile_image;
@@ -641,7 +613,6 @@ function checkUser() {
             document.getElementById("profilePicLarge").src = imgPath;
 
         } else {
-            // fallback image
             document.getElementById("profilePic").src = "https://via.placeholder.com/40";
             document.getElementById("profilePicLarge").src = "https://via.placeholder.com/100";
         }
@@ -714,7 +685,6 @@ function loadTasks() {
             else if (task.status === "done") done++;
         });
 
-        // Analytics
         document.getElementById("todoCount").innerText = todo;
         document.getElementById("progressCount").innerText = inProgress;
         document.getElementById("doneCount").innerText = done;

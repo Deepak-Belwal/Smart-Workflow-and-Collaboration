@@ -11,7 +11,6 @@ $id = $_POST['id'];
 $status = $_POST['status'];
 $user_id = $_SESSION['user_id'];
 
-// 🔥 Check if this task belongs to the user
 $sql = "SELECT assigned_to FROM tasks WHERE id=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id);
@@ -24,7 +23,6 @@ if (!$task || $task['assigned_to'] != $user_id) {
     exit();
 }
 
-// ✅ Update allowed
 $sql = "UPDATE tasks SET status=? WHERE id=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("si", $status, $id);

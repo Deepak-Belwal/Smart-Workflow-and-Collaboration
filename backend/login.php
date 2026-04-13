@@ -17,7 +17,6 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['role'] = $user['role'];  
 
-    // redirect instead of echo
     header("Location: ../frontend/dashboard.html");
     exit();
 } else {
